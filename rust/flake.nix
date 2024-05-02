@@ -15,6 +15,7 @@
         defaultPackage = naersk-lib.buildPackage ./.;
         devShell = with pkgs; mkShell {
           buildInputs = [
+            darwin.apple_sdk.frameworks.SystemConfiguration
             cargo
             rustc
             rustfmt
