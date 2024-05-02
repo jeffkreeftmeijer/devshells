@@ -1,9 +1,6 @@
 
 # Managing development environments with Nix
 
-- [On-demand development environments](#orgb2892a5)
-- [A repository of development environments](#org999fb2b)
-
 [Nix's develop program](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-develop) starts a shell with the results of a derivation. For example, to start a bash shell with Cargo on a machine that doesn't have it installed:
 
 ```shell
@@ -70,8 +67,6 @@ Then, run `direnv allow` in the project directory, and all dependencies are adde
 After checking in the flake, the `.envrc` file, and the generated `flake.lock`, the project's dependencies are automatically installed and version locked, resulting in a reproducable setup for the project.
 
 
-<a id="orgb2892a5"></a>
-
 ## On-demand development environments
 
 Managing environments with Nix is powerful, but a downside of this approach is that the flake file needs to be checked into version control. That's not a problem for projects that use Nix to manage their dependencies, but, when working on a project you don't own, adding another way to handle dependencies might not be appreciated by the other maintainers. Aside from that, it might be useful to share development environments between similar projects without having to duplicate the flake.
@@ -92,8 +87,6 @@ use flake /Users/jeff/devshells/rust
 
 This means that just having an `.envrc` file that points to a flake located elsewhere is enough to handle dependencies. This still requires a single file to be added to the project directory, but it allows for moving the flake and lock file to a seperate, version-controlled, location.
 
-
-<a id="org999fb2b"></a>
 
 ## A repository of development environments
 
