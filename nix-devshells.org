@@ -4,6 +4,7 @@
 #+title: Managing development environments with Nix
 #+author: Jeff Kreeftmeijer
 #+date: 2024-05-02
+#+options: toc:nil
 
 [[https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-develop][Nix's develop program]] starts a shell with the results of a derivation.
 For example, to start a bash shell with Cargo on a machine that doesn't have it installed:
