@@ -14,6 +14,10 @@
           buildInputs = [
             postgresql
           ];
+
+          shellHook = ''
+            export PGDATA=data
+          '';
         };
       }
     );
