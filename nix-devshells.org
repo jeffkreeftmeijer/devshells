@@ -59,12 +59,12 @@ That's not a problem for projects that use Nix to manage their dependencies, but
 Aside from that, it might be useful to share development environments between similar projects without having to duplicate the flake.
 
 Luckily, both Nix and direnv allow dependencies to be loaded from other paths than the current directory.
-To start a development shell from a flake in the =/Users/jeff/devshells/rust= directory, pass the directory path to the call to src_shell[:exports code]{nix develop} command:
+To start a development shell from a flake in the =~/devshells/rust= directory, pass the directory path to the call to src_shell[:exports code]{nix develop} command:
 
 #+headers: :cache yes
 #+headers: :exports both
 #+begin_src shell
-  nix develop /Users/jeff/devshells/rust --command cargo --version
+  nix develop ~/devshells/rust --command cargo --version
 #+end_src
 
 #+RESULTS[394330679272b0eb0d64c90ddce56d7d6270fbfe]:
@@ -74,7 +74,7 @@ To use a flake from outside the current directory with direnv, add a path to the
 
 #+caption: =.envrc=
 #+begin_src envrc
-  use flake /Users/jeff/devshells/rust
+  use flake ~/devshells/rust
 #+end_src
 
 This means that just having an ~.envrc~ file that points to a flake located elsewhere is enough to handle dependencies.
@@ -87,7 +87,7 @@ This means adding a single-line =.envrc= is enough to add a develoment environme
 
 #+caption: =.envrc=
 #+begin_src envrc
-  use flake /Users/jeff/devshells/rust
+  use flake ~/devshells/rust
 #+end_src
 
 This takes the flake file from the rust directory in my local checkout[fn:remote] of my development environment repository.
