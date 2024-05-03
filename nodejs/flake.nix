@@ -13,6 +13,7 @@
         devShell = with pkgs; mkShell {
           buildInputs = [
             nodejs_22
+            nodePackages.prettier
           ];
         };
       }
