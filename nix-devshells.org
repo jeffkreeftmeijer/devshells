@@ -82,7 +82,16 @@ This still requires a single file to be added to the project directory, but it a
 
 * A repository of development environments
 
-For projects I can't add flakes to, I use my own [[https://github.com/jeffkreeftmeijer/devshells][repository of development environments]][fn:repositories].
+For projects I can't add flakes to, I use my own [[https://github.com/jeffkreeftmeijer/devshells][repository of development environments]][fn:repositories], which includes flakes for to set up the following languages and utilities:
+
+- [[https://github.com/jeffkreeftmeijer/devshells/blob/main/rust/flake.nix][Rust]] :: version 1.77.1, with Cargo, rustfmt and Clippy
+
+- [[https://github.com/jeffkreeftmeijer/devshells/blob/main/elixir/flake.nix][Elixir]] :: version 1.16.2 on Erlang 25.3.2.11
+
+- [[https://github.com/jeffkreeftmeijer/devshells/blob/main/nodejs/flake.nix][Node.js]] :: version 22.0.0, with Prettier 3.2.5
+
+- [[https://github.com/jeffkreeftmeijer/devshells/blob/main/postgresql/flake.nix][PostgreSQL]] :: version 15.6, with ~PGDATA~ configured to be directory-local
+
 This means adding a single-line =.envrc= is enough to add a develoment environment for Rust projects:
 
 #+caption: =.envrc=
@@ -91,6 +100,15 @@ This means adding a single-line =.envrc= is enough to add a develoment environme
 #+end_src
 
 This takes the flake file from the rust directory in my local checkout[fn:remote] of my development environment repository.
+
+Because environments can be [[https://determinate.systems/posts/nix-direnv/#layering-environments][environments can be layered]], a Phoenix project requiring Elixir, Node.js and PostgresQL simply stacks three flakes:
+
+#+caption: =.envrc=
+#+begin_src envrc
+  use flake ~/devshells/elixir
+  use flake ~/devshells/nodejs
+  use flake ~/devshells/postgresql
+#+end_src
 
 [fn:check-in] After adding the flake, ensure it's checked into version control.
 If not, Nix can't find it and will throw an error message that doesn't /quite/ explain what's wrong:
