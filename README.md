@@ -18,7 +18,7 @@ Nix's [template directory](https://github.com/NixOS/templates/tree/master) has s
 ```nix
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/92d295f588631b0db2da509f381b4fb1e74173c5";
     utils.url = "github:numtide/flake-utils";
   };
 
@@ -68,10 +68,10 @@ After checking in the flake, the `.envrc` file, and the generated `flake.lock`, 
 
 Managing environments with Nix is powerful, but a downside of this approach is that the flake file needs to be checked into version control. That's not a problem for projects that use Nix to manage their dependencies, but, when working on a project you don't own, adding another way to handle dependencies might not be appreciated by the other maintainers. Aside from that, it might be useful to share development environments between similar projects without having to duplicate the flake.
 
-Luckily, both Nix and direnv allow dependencies to be loaded from other paths than the current directory. To start a development shell from a flake in the `/Users/jeff/devshells/rust` directory, pass the directory path to the call to `nix develop` command:
+Luckily, both Nix and direnv allow dependencies to be loaded from other paths than the current directory. To start a development shell from a flake in the `~/devshells/rust` directory, pass the directory path to the call to `nix develop` command:
 
 ```shell
-nix develop /Users/jeff/devshells/rust --command cargo --version
+nix develop ~/devshells/rust --command cargo --version
 ```
 
     cargo 1.77.1
@@ -79,7 +79,7 @@ nix develop /Users/jeff/devshells/rust --command cargo --version
 To use a flake from outside the current directory with direnv, add a path to the directory containing the flake in the `.envrc` file:
 
 ```envrc
-use flake /Users/jeff/devshells/rust
+use flake ~/devshells/rust
 ```
 
 This means that just having an `.envrc` file that points to a flake located elsewhere is enough to handle dependencies. This still requires a single file to be added to the project directory, but it allows for moving the flake and lock file to a seperate, version-controlled, location.
@@ -90,7 +90,7 @@ This means that just having an `.envrc` file that points to a flake located else
 For projects I can't add flakes to, I use my own [repository of development environments](https://github.com/jeffkreeftmeijer/devshells)<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>. This means adding a single-line `.envrc` is enough to add a develoment environment for Rust projects:
 
 ```envrc
-use flake /Users/jeff/devshells/rust
+use flake ~/devshells/rust
 ```
 
 This takes the flake file from the rust directory in my local checkout<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup> of my development environment repository.
