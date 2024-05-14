@@ -92,6 +92,8 @@ For projects I can't add flakes to, I use my own [[https://github.com/jeffkreeft
 
 - [[https://github.com/jeffkreeftmeijer/devshells/blob/main/postgresql/flake.nix][PostgreSQL]] :: version 15.6, with ~PGDATA~ configured to be directory-local
 
+- [[https://github.com/jeffkreeftmeijer/devshells/blob/main/ruby/flake.nix][Ruby]] :: version 3.3.1
+
 This means adding a single-line =.envrc= is enough to add a develoment environment for Rust projects:
 
 #+caption: =.envrc=
