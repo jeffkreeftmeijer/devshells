@@ -86,6 +86,8 @@ For projects I can't add flakes to, I use my own [[https://github.com/jeffkreeft
 
 - [[https://github.com/jeffkreeftmeijer/devshells/blob/main/rust/flake.nix][Rust]] :: version 1.77.1, with Cargo, rustfmt, Clippy, and rust-analyzer
 
+- [[https://github.com/jeffkreeftmeijer/devshells/blob/main/rustup/flake.nix][Rustup]] :: version 1.26.0, a copy of the Rust flake, with with Rustup instead of separate utilities for projects that depend on it
+
 - [[https://github.com/jeffkreeftmeijer/devshells/blob/main/elixir/flake.nix][Elixir]] :: version 1.16.2 on Erlang 25.3.2.11
 
 - [[https://github.com/jeffkreeftmeijer/devshells/blob/main/nodejs/flake.nix][Node.js]] :: version 22.0.0, with Prettier 3.2.5
