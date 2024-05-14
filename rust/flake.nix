@@ -14,6 +14,7 @@
           buildInputs = [
             darwin.apple_sdk.frameworks.SystemConfiguration
             libiconv
+            gcc
             cargo
             rustc
             rustfmt
