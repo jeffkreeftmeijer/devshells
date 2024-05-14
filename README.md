@@ -30,13 +30,14 @@ Nix's [template directory](https://github.com/NixOS/templates/tree/master) has s
       {
 	devShell = with pkgs; mkShell {
 	  buildInputs = [
-	    darwin.apple_sdk.frameworks.SystemConfiguration
+	    darwin.apple_sdk.frameworks.Security
 	    libiconv
+	    gcc
 	    cargo
 	    rustc
 	    rustfmt
-	    pre-commit
 	    rustPackages.clippy
+	    rust-analyzer
 	  ];
 	  RUST_SRC_PATH = rustPlatform.rustLibSrc;
 	};
@@ -87,13 +88,35 @@ This means that just having an `.envrc` file that points to a flake located else
 
 ## A repository of development environments
 
-For projects I can't add flakes to, I use my own [repository of development environments](https://github.com/jeffkreeftmeijer/devshells)<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>. This means adding a single-line `.envrc` is enough to add a develoment environment for Rust projects:
+For projects I can't add flakes to, I use my own [repository of development environments](https://github.com/jeffkreeftmeijer/devshells)<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>, which includes flakes for to set up the following languages and utilities:
+
+-   **[Rust](https://github.com/jeffkreeftmeijer/devshells/blob/main/rust/flake.nix):** version 1.77.1, with Cargo, rustfmt, Clippy, and rust-analyzer
+
+-   **[Rustup](https://github.com/jeffkreeftmeijer/devshells/blob/main/rustup/flake.nix):** version 1.26.0, a copy of the Rust flake, with with Rustup instead of separate utilities for projects that depend on it
+
+-   **[Elixir](https://github.com/jeffkreeftmeijer/devshells/blob/main/elixir/flake.nix):** version 1.16.2 on Erlang 25.3.2.11
+
+-   **[Node.js](https://github.com/jeffkreeftmeijer/devshells/blob/main/nodejs/flake.nix):** version 22.0.0, with Prettier 3.2.5
+
+-   **[PostgreSQL](https://github.com/jeffkreeftmeijer/devshells/blob/main/postgresql/flake.nix):** version 15.6, with `PGDATA` configured to be directory-local
+
+-   **[Ruby](https://github.com/jeffkreeftmeijer/devshells/blob/main/ruby/flake.nix):** version 3.3.1
+
+This means adding a single-line `.envrc` is enough to add a develoment environment for Rust projects:
 
 ```envrc
 use flake ~/devshells/rust
 ```
 
 This takes the flake file from the rust directory in my local checkout<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup> of my development environment repository.
+
+Because environments can be [environments can be layered](https://determinate.systems/posts/nix-direnv/#layering-environments), a Phoenix project requiring Elixir, Node.js and PostgresQL simply stacks three flakes:
+
+```envrc
+use flake ~/devshells/elixir
+use flake ~/devshells/nodejs
+use flake ~/devshells/postgresql
+```
 
 ## Footnotes
 
