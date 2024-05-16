@@ -12,6 +12,7 @@
       {
         devShell = with pkgs; mkShell {
           buildInputs = [
+            darwin.apple_sdk.frameworks.CoreServices
             darwin.apple_sdk.frameworks.Security
             libiconv
             gcc
