@@ -13,6 +13,7 @@
         devShell = with pkgs; mkShell {
           buildInputs = [
             elixir
+            elixir-ls
           ];
         };
       }
