@@ -30,6 +30,7 @@ Nix's [template directory](https://github.com/NixOS/templates/tree/master) has s
       {
 	devShell = with pkgs; mkShell {
 	  buildInputs = [
+	    darwin.apple_sdk.frameworks.CoreServices
 	    darwin.apple_sdk.frameworks.Security
 	    libiconv
 	    gcc
@@ -94,7 +95,7 @@ For projects I can't add flakes to, I use my own [repository of development envi
 
 -   **[Rustup](https://github.com/jeffkreeftmeijer/devshells/blob/main/rustup/flake.nix):** version 1.26.0, a copy of the Rust flake, with with Rustup instead of separate utilities for projects that depend on it
 
--   **[Elixir](https://github.com/jeffkreeftmeijer/devshells/blob/main/elixir/flake.nix):** version 1.16.2 on Erlang 25.3.2.11
+-   **[Elixir](https://github.com/jeffkreeftmeijer/devshells/blob/main/elixir/flake.nix):** version 1.16.2 on Erlang 25.3.2.11, with elixir-ls
 
 -   **[Node.js](https://github.com/jeffkreeftmeijer/devshells/blob/main/nodejs/flake.nix):** version 22.0.0, with Prettier 3.2.5
 
