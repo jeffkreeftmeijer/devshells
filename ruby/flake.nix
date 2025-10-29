@@ -13,6 +13,7 @@
         devShell = with pkgs; mkShell {
           buildInputs = [
             ruby_3_3
+            rubyPackages_3_3.rails
             libyaml
             solargraph
             rufo
