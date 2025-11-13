@@ -101,9 +101,11 @@ For projects I can't add flakes to, I use my own [repository of development envi
 
 -   **[PostgreSQL](https://github.com/jeffkreeftmeijer/devshells/blob/main/postgresql/flake.nix):** version 15.6, with `PGDATA` configured to be directory-local
 
--   **[Ruby](https://github.com/jeffkreeftmeijer/devshells/blob/main/ruby/flake.nix):** version 3.3.1
+-   **[Ruby](https://github.com/jeffkreeftmeijer/devshells/blob/main/ruby/flake.nix):** version 3.3.1, with libyaml for Psych, Solargraph and rufo
 
 -   [Kubernetes](https://github.com/jeffkreeftmeijer/devshells/blob/main/kubernetes/flake.nix):: Minikube 1.33.1, with Kubectl 1.30.2 and Helm 3.15.2
+
+-   **[Protobuf](https://github.com/jeffkreeftmeijer/devshells/blob/main/protobuf/flake.nix):** version 21.12, with protoc-gen-rust 3.2.0
 
 This means adding a single-line `.envrc` is enough to add a develoment environment for Rust projects:
 
