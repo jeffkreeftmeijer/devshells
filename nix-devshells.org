@@ -1,5 +1,6 @@
 :PROPERTIES:
 :ID:       08468BD5-BAC0-4E47-95BE-EA1B72E88056
+:ROAM_TAGS:  [[id:a010f79d-1cd2-4e24-a790-9dba4171f47e][Nix]]
 :END:
 #+title: Managing development environments with Nix
 #+author: Jeff Kreeftmeijer
